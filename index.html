@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Page Title</title>
+</head>
+<body>
+  <script>
+    // Get computer selection
+    function getComputerChoice() {
+      let numChoice = Math.floor(Math.random() * 3);
+      switch (numChoice){
+        case 0:
+          return "rock";
+        case 1:
+          return "paper";
+        case 2:
+          return "scissors";
+      }
+    }
+
+    // Get user selection
+    function getPlayerChoice() {
+      let input = prompt("Please enter either rock, paper, or scissors");
+      return input;
+    }
+
+    // Check valid player choice
+    function checkValidChoice(playerChoice){
+      if ((playerChoice !== "rock") && (playerChoice !== "paper") && (playerChoice !== "scissors")) {
+        console.log("The player chose this: " + playerChoice);
+        console.log("Invalid answer. Please enter either rock, paper, or scissors.");
+        return;
+      }
+      else {
+        validChoice = true;
+        console.log("This choice is valid");
+        return;
+      }
+    }
+
+    // Plays one round of Rock, Paper, Scissors
+    function playRound(){
+      let computerChoice = getComputerChoice();
+      console.log('The computer chose: ' + computerChoice);
+
+      validChoice = false;
+      let playerChoice = "";
+      while (validChoice == false) {
+        playerChoice = getPlayerChoice().toLowerCase();
+        checkValidChoice(playerChoice);
+      }
+      console.log(checkRoundWin(playerChoice, computerChoice));
+      return;
+    }
+
+    // Checks to see whether the player or computer wins the round
+    function checkRoundWin(playerChoice, computerChoice) {
+      if (playerChoice == computerChoice) {
+        return "You both selected " + playerChoice + ", it's a tie!";
+      }
+      else if (playerChoice == "rock") {
+        if (computerChoice == "paper") {
+          computerWins++;
+          return "Computer wins the round!";
+        }
+        else {
+          playerWins++;
+          return "Player wins the round!";
+        }
+      }
+      else if (playerChoice == "paper") {
+        if (computerChoice == "rock") {
+          playerWins++;
+          return "Player wins the round!";
+        }
+        else {
+          computerWins++;
+          return "Computer wins the round!";
+        }
+      }
+      else if (playerChoice == "scissors") {
+        if (computerChoice == "rock") {
+          computerWins++;
+          return "Computer wins the round!";
+        }
+        else {
+          playerWins++;
+          return "Player wins the round!";
+        }
+      }
+    }
+
+    function game() {
+
+      playerWins = 0;
+      computerWins = 0;
+
+      while ((playerWins < 5) && (computerWins < 5)){
+        playRound();
+        console.log("Standings - Player: " + playerWins + " / Computer: " + computerWins + ".")
+      }
+      if (playerWins == 5) {
+        console.log("Player wins the series!");
+        return;
+      }
+      else {
+        console.log("Computer wins the series!");
+        return;
+      }
+    }
+
+    // Script
+
+    let validChoice = false;
+
+    // let computerChoice = getComputerChoice();
+    // console.log('The computer chose: ' + computerChoice);
+
+    // let validChoice = false;
+    // let playerChoice = "";
+    // while (validChoice == false) {
+    //   playerChoice = getPlayerChoice().toLowerCase();
+    //   checkValidChoice(playerChoice);
+    // }
+    // console.log(checkRoundWin(playerChoice, computerChoice));
+
+
+    game();
+
+  </script>
+</body>
+</html>
