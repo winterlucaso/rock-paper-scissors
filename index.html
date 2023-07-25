@@ -2,132 +2,45 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Page Title</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-  <script>
-    // Get computer selection
-    function getComputerChoice() {
-      let numChoice = Math.floor(Math.random() * 3);
-      switch (numChoice){
-        case 0:
-          return "rock";
-        case 1:
-          return "paper";
-        case 2:
-          return "scissors";
-      }
-    }
+  <div class="title-block">
+    <h1>Rock, Paper, Scissors</h1>
+  </div>
+  <div class="game-block">
+    <div class="user-block" id="player-block">
+      <div class="player-title">Player</div>
+      <img src="./img/blank.png" id="player-choice-img">
+    </div>
+    <div class="scoreboard">
+      <div id="playerScore" class="scoreValue">0</div>
+      <div id="score-hyphen" class="scoreValue"> - </div>
+      <div id="computerScore" class="scoreValue">0</div>
+    </div>
+    <div class="user-block" id="computer-block">
+      <div class="player-title">Computer</div>
+      <img src="./img/blank.png" id="computer-choice-img">
+    </div>
 
-    // Get user selection
-    function getPlayerChoice() {
-      let input = prompt("Please enter either rock, paper, or scissors");
-      return input;
-    }
+  </div>
+  
+  <div class="player-choices-container">
+    <button id="rockBtn" class="btn">Rock</button>
+    <button id="paperBtn" class="btn">Paper</button>
+    <button id="scissorsBtn" class="btn">Scissors</button>
+  </div>
 
-    // Check valid player choice
-    function checkValidChoice(playerChoice){
-      if ((playerChoice !== "rock") && (playerChoice !== "paper") && (playerChoice !== "scissors")) {
-        console.log("The player chose this: " + playerChoice);
-        console.log("Invalid answer. Please enter either rock, paper, or scissors.");
-        return;
-      }
-      else {
-        validChoice = true;
-        console.log("This choice is valid");
-        return;
-      }
-    }
+  <div id="messageConsole">Choose an option. First to 5 wins!</div>
 
-    // Plays one round of Rock, Paper, Scissors
-    function playRound(){
-      let computerChoice = getComputerChoice();
-      console.log('The computer chose: ' + computerChoice);
-
-      validChoice = false;
-      let playerChoice = "";
-      while (validChoice == false) {
-        playerChoice = getPlayerChoice().toLowerCase();
-        checkValidChoice(playerChoice);
-      }
-      console.log(checkRoundWin(playerChoice, computerChoice));
-      return;
-    }
-
-    // Checks to see whether the player or computer wins the round
-    function checkRoundWin(playerChoice, computerChoice) {
-      if (playerChoice == computerChoice) {
-        return "You both selected " + playerChoice + ", it's a tie!";
-      }
-      else if (playerChoice == "rock") {
-        if (computerChoice == "paper") {
-          computerWins++;
-          return "Computer wins the round!";
-        }
-        else {
-          playerWins++;
-          return "Player wins the round!";
-        }
-      }
-      else if (playerChoice == "paper") {
-        if (computerChoice == "rock") {
-          playerWins++;
-          return "Player wins the round!";
-        }
-        else {
-          computerWins++;
-          return "Computer wins the round!";
-        }
-      }
-      else if (playerChoice == "scissors") {
-        if (computerChoice == "rock") {
-          computerWins++;
-          return "Computer wins the round!";
-        }
-        else {
-          playerWins++;
-          return "Player wins the round!";
-        }
-      }
-    }
-
-    function game() {
-
-      playerWins = 0;
-      computerWins = 0;
-
-      while ((playerWins < 5) && (computerWins < 5)){
-        playRound();
-        console.log("Standings - Player: " + playerWins + " / Computer: " + computerWins + ".")
-      }
-      if (playerWins == 5) {
-        console.log("Player wins the series!");
-        return;
-      }
-      else {
-        console.log("Computer wins the series!");
-        return;
-      }
-    }
-
-    // Script
-
-    let validChoice = false;
-
-    // let computerChoice = getComputerChoice();
-    // console.log('The computer chose: ' + computerChoice);
-
-    // let validChoice = false;
-    // let playerChoice = "";
-    // while (validChoice == false) {
-    //   playerChoice = getPlayerChoice().toLowerCase();
-    //   checkValidChoice(playerChoice);
-    // }
-    // console.log(checkRoundWin(playerChoice, computerChoice));
+  <div id="restartBlock">
+    <button id="restartBtn" class="btn">Restart</button>
+  </div>
 
 
-    game();
-
-  </script>
 </body>
 </html>

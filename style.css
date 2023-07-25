@@ -1,0 +1,77 @@
+/* * {
+    border: 2px solid red;
+} */
+
+h1 {
+    text-align: center;
+    font-size: 70px;
+}
+
+/* Scoreboard */
+.game-block {
+    display: flex;
+    justify-content: center;
+}
+
+.user-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+}
+
+.player-title {
+    font-size: 20px;
+    /* margin: 50px; */
+    padding: 30px;
+    height: 20px;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.scoreValue {
+    font-size: 30px;
+    font-weight: bold;
+    padding: 30px;
+}
+
+#player-choice-img,
+#computer-choice-img {
+    width: 100px;
+    height: 100px;
+}
+
+
+/* Buttons */
+.player-choices-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    width: 100px;
+    margin: 10px;
+    padding: 20px;
+}
+
+/* Message Console */
+#messageConsole {
+    text-align: center;
+    margin: 30px;
+    font-size: 20px;
+}
+
+#restartBlock {
+    display: flex;
+    justify-content: center;
+
+}
+
+#restartBtn {
+    visibility: hidden;
+}
